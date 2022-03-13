@@ -1,0 +1,11 @@
+<div id="keyboard">
+  <div *ngFor='let row of keyboard.keys' class='keyboard-row'>
+    <div *ngFor='let key of row | keyvalue: originalOrder' [ngClass]="{
+      'keyboard-key-absent': key.value === 0,
+      'keyboard-key-present': key.value === 1,
+      'keyboard-key-correct': key.value === 2
+    }" class='keyboard-key'>
+      {{key.key}}
+    </div>
+  </div>
+</div>

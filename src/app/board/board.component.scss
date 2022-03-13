@@ -1,0 +1,47 @@
+#game-board-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-board {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+}
+
+.game-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.game-tile {
+    min-height: 50px;
+    min-width: 50px;
+    border: 1px solid green;
+    display: inline-block;
+}
+
+.game-tile-letter {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  text-transform: uppercase;
+  height: 100%;
+}
+
+.game-tile-correct {
+    background-color: green;
+}
+
+.game-tile-present {
+    background-color: yellow;
+}
+
+.game-tile-absent {
+    background-color: grey;
+}

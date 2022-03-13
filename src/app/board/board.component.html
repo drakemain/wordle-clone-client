@@ -1,0 +1,24 @@
+<div id="game-board-container">
+  <div id="game-board">
+    <div *ngFor="let row of board" class="game-row">
+      <div *ngFor="let cell of row" [ngClass]="{
+          'game-tile-absent': cell.guess == 0,
+          'game-tile-present': cell.guess == 1,
+          'game-tile-correct': cell.guess == 2
+        }" class="game-tile">
+        <div class="game-tile-letter">
+          {{cell.char}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf='gameState !== 0'>
+  <div *ngIf='gameState === 1'>
+    You guessed the correct word!
+  </div>
+  <div *ngIf='gameState === 2'>
+    You didn't guess the word. :(
+  </div>
+</div>
