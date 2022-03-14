@@ -17,8 +17,10 @@
 .game-tile {
     min-height: 50px;
     min-width: 50px;
-    border: 1px solid green;
+    border: 1px solid black;
     display: inline-block;
+    margin: 1px;
+    background-color: lightgray;
 }
 
 .game-tile-letter {
