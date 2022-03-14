@@ -7,7 +7,7 @@ import { ServerResponse } from './definitions/ServerResponse';
   providedIn: 'root'
 })
 export class GuessService {
-  private BASE_URL = 'http://localhost:4200/api/guess';
+  private BASE_URL = `/guess`;
 
   constructor(private http: HttpClient) { }
 
