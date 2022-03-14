@@ -15,6 +15,11 @@ export class KeyboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onKeyClick(char: string) {
+    console.log(`KEY CLICK: ${char}`);
+    this.keyboard.triggerKeyEvent(char);
+  }
+
   originalOrder (a: KeyValue<string,number>, b: KeyValue<string,number>): number {
     return 0;
   }

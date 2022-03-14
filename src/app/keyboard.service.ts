@@ -20,6 +20,15 @@ export class KeyboardService {
     console.log(this.keys);
   }
 
+  triggerKeyEvent(char: string) {
+    const event: KeyboardEvent = new KeyboardEvent('keydown', 
+      KeyboardService.createKeyEventProperties(char));
+
+    console.log(event);
+
+    document.dispatchEvent(event);
+  }
+
   setKeyState(key: string, newState: GameBoard.Guess) {
     console.log('test');
     let correctRow;
@@ -62,10 +71,42 @@ export class KeyboardService {
         return KeyState.Correct;
     }
   }
+
+  private static mapCharToKeyCode(char: string): number {
+    const charCode = char.charCodeAt(0);
+    
+    if (char.length !== 1) {
+      return 0;
+    } else if (charCode >= 97 && charCode <= 122) {
+      return charCode - 32;
+    } else if (char === '⏎'){
+      return 13;
+    } else if (char === '<') {
+      return 8;
+    }
+
+    return 0;
+  }
+
+  private static createKeyEventProperties(char: string): KeyboardEventInit {
+    const charCode = char.charCodeAt(0);
+    let key = '';
+    if (charCode >= 97 && charCode <= 122) {
+      key = char;
+    } else if (char === '⏎') {
+      key = 'Enter';
+    } else if (char === '<') {
+      key = 'Backspace';
+    }
+
+    return {key, keyCode: KeyboardService.mapCharToKeyCode(char)};
+
+  }
+
   private static makeKeys(): Array<Map<string, KeyState>> {
     const rows = [['q','w','e','r','t','y','u','i','o','p'],
       ['a','s','d','f','g','h','j','k','l'],
-      ['z','x','c','v','b','n','m']];
+      ['⏎','z','x','c','v','b','n','m', '<']];
 
     let result = [];
 

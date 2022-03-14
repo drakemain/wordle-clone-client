@@ -17,6 +17,7 @@ export class KeyEventService {
 }
 
 const keyCodeFilter = (e: KeyboardEvent): boolean => {
+  console.log(e.keyCode);
   return (e.keyCode >= 65 && e.keyCode <= 90)
     || e.keyCode === 8 || e.keyCode === 13;
 };
